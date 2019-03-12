@@ -7,7 +7,7 @@ using SeeSharpShop.Models;
 namespace SeeSharpShop.Controllers
 {
     [Route("api/[controller]")]
-    public class ShopController : Controller
+    public class ProductsController : Controller
     {
         [HttpGet]
         [ProducesResponseType(typeof(List<Product>), StatusCodes.Status200OK)]
