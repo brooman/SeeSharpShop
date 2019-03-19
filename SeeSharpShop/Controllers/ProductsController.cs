@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SeeSharpShop.Models;
-using Dapper;
-using MySql.Data.MySqlClient;
+using SeeSharpShop.Repositories;
+using SeeSharpShop.Services;
 
 namespace SeeSharpShop.Controllers
 {
@@ -14,11 +14,12 @@ namespace SeeSharpShop.Controllers
     [Route("api/[controller]")]
     public class ProductsController : Controller
     {
-        protected readonly string connectionString;
+        private readonly ProductService productService;
 
         public ProductsController(IConfiguration configuration)
         {
-            this.connectionString = configuration.GetConnectionString("ConnectionString");
+            var connectionString = configuration.GetConnectionString("ConnectionString");
+            this.productService = new ProductService(new ProductRepository(connectionString));
         }
 
         [HttpGet]
@@ -26,12 +27,8 @@ namespace SeeSharpShop.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Index()
         {
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                var Products = connection.Query<Product>("SELECT * FROM products").ToList();
-                return Ok(Products);
-            }
-
+            var products = productService.All();
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
@@ -41,16 +38,22 @@ namespace SeeSharpShop.Controllers
         {
             try
             {
-                using (var connection = new MySqlConnection(this.connectionString))
-                {
-                    var Product = connection.Query<Product>("SELECT * FROM products WHERE id = @id", new { id });
-                    return Ok(Product);
-                }
+                var product = productService.Get(id);
+                return Ok(product);
             }
             catch(InvalidOperationException)
             {
                 return NotFound();
             }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
+        public IActionResult Store([FromBody] Product product)
+        {
+            productService.Add(product);
+            return Ok();
         }
     }
 }

@@ -9,4 +9,5 @@ namespace SeeSharpShop.Models
         public string ImagePath { get; set; }
         public int Cost { get; set; }
     }
+
 }
