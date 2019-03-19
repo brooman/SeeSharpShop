@@ -14,7 +14,7 @@ namespace SeeSharpShop.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(List<Product>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get()
+        public IActionResult Index()
         {
             return Ok(Database);
         }
@@ -22,7 +22,7 @@ namespace SeeSharpShop.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
+        public IActionResult Show(int id)
         {
             try
             {
