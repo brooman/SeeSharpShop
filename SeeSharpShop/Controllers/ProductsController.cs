@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using SeeSharpShop.Models;
 using SeeSharpShop.Repositories;
 using SeeSharpShop.Services;
+using SeeSharpShop.Validators;
+using System.Linq;
 
 namespace SeeSharpShop.Controllers
 {
@@ -41,7 +42,7 @@ namespace SeeSharpShop.Controllers
                 var product = productService.Get(id);
                 return Ok(product);
             }
-            catch(InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 return NotFound();
             }
@@ -52,8 +53,21 @@ namespace SeeSharpShop.Controllers
         [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
         public IActionResult Store([FromBody] Product product)
         {
-            productService.Add(product);
-            return Ok();
+            var validator = new ProductValidator();
+            var results = validator.Validate(product);
+
+            if (results.IsValid)
+            {
+                productService.Add(product);
+                return Ok();
+            }
+
+            //Return 
+            var firstError = results.Errors.First();
+            return BadRequest(new {
+                firstError.PropertyName,
+                firstError.ErrorMessage
+            } );
         }
     }
 }
