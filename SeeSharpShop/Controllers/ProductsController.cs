@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using SeeSharpShop.Models;
 using SeeSharpShop.Repositories;
 using SeeSharpShop.Services;
-using SeeSharpShop.Validators;
 using System.Linq;
 
 namespace SeeSharpShop.Controllers
@@ -25,7 +24,6 @@ namespace SeeSharpShop.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(List<Product>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Index()
         {
             var products = productService.All();
@@ -53,21 +51,21 @@ namespace SeeSharpShop.Controllers
         [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
         public IActionResult Store([FromBody] Product product)
         {
-            var validator = new ProductValidator();
-            var results = validator.Validate(product);
+            //Add and Return OK if valid
+            var result = productService.Add(product);
 
-            if (results.IsValid)
-            {
-                productService.Add(product);
-                return Ok();
-            }
+            return result == null ? Ok() : (IActionResult)BadRequest(result);
+        }
 
-            //Return 
-            var firstError = results.Errors.First();
-            return BadRequest(new {
-                firstError.PropertyName,
-                firstError.ErrorMessage
-            } );
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
+        public IActionResult Update(int id, [FromBody] Product product)
+        {
+            //Add and Return OK if valid
+            var result = productService.Update(id, product);
+
+            return result == null ? Ok() : (IActionResult)BadRequest(result);
         }
     }
 }

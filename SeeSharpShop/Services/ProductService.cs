@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using FluentValidation;
 using SeeSharpShop.Models;
 using SeeSharpShop.Repositories;
+using SeeSharpShop.Validators;
 
 namespace SeeSharpShop.Services
 {
@@ -23,10 +26,48 @@ namespace SeeSharpShop.Services
             return this.productRepository.Single(id);
         }
 
-        public bool Add(Product product)
-        {   
-            this.productRepository.Add(product);
-            return true;
+        public object Add(Product product)
+        {
+            //Validate input
+            var validator = new ProductValidator(productRepository);
+            var results = validator.Validate(product);
+
+            if (results.IsValid)
+            {
+                this.productRepository.Add(product);
+                return null;
+            }
+
+            //Return Validation Error
+            var firstError = results.Errors.First();
+            return new
+            {
+                firstError.PropertyName,
+                firstError.ErrorMessage
+            };
+        }
+
+        public object Update(int id, Product product)
+        {
+            product.Id = id;
+
+            //Validate input
+            var validator = new ProductValidator(productRepository);
+            var results = validator.Validate(product, ruleSet: "MustExist");
+
+            if (results.IsValid)
+            {
+                this.productRepository.Update(product);
+                return null;
+            }
+
+            //Return Validation Error
+            var firstError = results.Errors.First();
+            return new
+            {
+                firstError.PropertyName,
+                firstError.ErrorMessage
+            };
         }
     }
 }
