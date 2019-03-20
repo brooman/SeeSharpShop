@@ -6,12 +6,11 @@ namespace SeeSharpShop.Services
 {
     public class ProductService
     {
-        private readonly string connectionString;
         private readonly ProductRepository productRepository;
 
-        public ProductService(ProductRepository newsRepository)
+        public ProductService(ProductRepository productRepository)
         {
-            this.productRepository = newsRepository;
+            this.productRepository = productRepository;
         }
 
         public List<Product> All()
@@ -25,7 +24,7 @@ namespace SeeSharpShop.Services
         }
 
         public bool Add(Product product)
-        {
+        {   
             this.productRepository.Add(product);
             return true;
         }
