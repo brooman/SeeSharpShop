@@ -38,7 +38,7 @@ namespace SeeSharpShop.Repositories
             using (var connection = new MySqlConnection(this.connectionString))
             {
                 connection.Execute(
-                "INSERT INTO News (name, description, image_path, cost) VALUES(@Name, @Description, @ImagePath, @Cost);",
+                "INSERT INTO Products (name, description, image_path, cost) VALUES(@Name, @Description, @ImagePath, @Cost);",
                     product
                 );
             }
