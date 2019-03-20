@@ -48,24 +48,33 @@ namespace SeeSharpShop.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status400BadRequest)]
         public IActionResult Store([FromBody] Product product)
         {
             //Add and Return OK if valid
             var result = productService.Add(product);
 
-            return result == null ? Ok() : (IActionResult)BadRequest(result);
+            return result == null ? Ok() : (IActionResult)BadRequest(new { Error = result });
         }
 
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(void), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status400BadRequest)]
         public IActionResult Update(int id, [FromBody] Product product)
         {
-            //Add and Return OK if valid
             var result = productService.Update(id, product);
 
-            return result == null ? Ok() : (IActionResult)BadRequest(result);
+            return result == null ? Ok() : (IActionResult)BadRequest(new { Error = result });
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(JsonResult), StatusCodes.Status400BadRequest)]
+        public IActionResult Destroy(int id)
+        {
+            var result = productService.Delete(id);
+
+            return result == null ? Ok() : (IActionResult)BadRequest(new { Error = result } );
         }
     }
 }

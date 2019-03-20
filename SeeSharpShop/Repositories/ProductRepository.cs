@@ -60,6 +60,14 @@ namespace SeeSharpShop.Repositories
             }
         }
 
+        public void Delete(int id)
+        {
+            using (var connection = new MySqlConnection(this.connectionString))
+            {
+                connection.Execute("DELETE FROM Products WHERE id = @Id", new { Id = id });
+            }
+        }
+
         public bool Exists(int id)
         {
             using (var connection = new MySqlConnection(this.connectionString))

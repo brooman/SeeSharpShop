@@ -69,5 +69,20 @@ namespace SeeSharpShop.Services
                 firstError.ErrorMessage
             };
         }
+
+        public object Delete(int id)
+        {
+            if (productRepository.Exists(id))
+            {
+                productRepository.Delete(id);
+                return null;
+            }
+
+            return new
+            {
+                PropertyName = "Id",
+                ErrorMessage = "Requested product doesn't exist"
+            };
+        }
     }
 }
