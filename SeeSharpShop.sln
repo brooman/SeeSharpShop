@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharpShop", "SeeSharpShop\SeeSharpShop.csproj", "{6287A343-1BB6-43ED-A0DB-97AE8A23BC97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharpShop.Tests", "SeeSharpShop.Tests\SeeSharpShop.Tests.csproj", "{CD1679DD-5F3E-4BBD-883B-017FE4CDA19E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharpShop.UnitTests", "SeeSharpShop.UnitTests\SeeSharpShop.UnitTests.csproj", "{B74EC7CB-D478-40AB-9B00-76F419AB2C4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +15,9 @@ Global
 		{6287A343-1BB6-43ED-A0DB-97AE8A23BC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6287A343-1BB6-43ED-A0DB-97AE8A23BC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6287A343-1BB6-43ED-A0DB-97AE8A23BC97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD1679DD-5F3E-4BBD-883B-017FE4CDA19E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD1679DD-5F3E-4BBD-883B-017FE4CDA19E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD1679DD-5F3E-4BBD-883B-017FE4CDA19E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD1679DD-5F3E-4BBD-883B-017FE4CDA19E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B74EC7CB-D478-40AB-9B00-76F419AB2C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B74EC7CB-D478-40AB-9B00-76F419AB2C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74EC7CB-D478-40AB-9B00-76F419AB2C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B74EC7CB-D478-40AB-9B00-76F419AB2C4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
