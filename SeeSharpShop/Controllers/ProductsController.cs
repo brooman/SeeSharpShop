@@ -37,7 +37,7 @@ namespace SeeSharpShop.Controllers
         {
             try
             {
-                var product = productService.Get(id);
+                var product = productService.Single(id);
                 return Ok(product);
             }
             catch (InvalidOperationException)

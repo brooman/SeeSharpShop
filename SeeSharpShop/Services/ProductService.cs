@@ -21,7 +21,7 @@ namespace SeeSharpShop.Services
             return this.productRepository.All();
         }
 
-        public Product Get(int id)
+        public Product Single(int id)
         {
             return this.productRepository.Single(id);
         }
