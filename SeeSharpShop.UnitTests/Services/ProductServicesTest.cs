@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 namespace SeeSharpShop.UnitTests.Services
 {
+    [TestFixture]
     public class ProductServicesTest
     {
         private IProductRepository productRepository;
@@ -25,7 +26,7 @@ namespace SeeSharpShop.UnitTests.Services
         public void All_ReturnsResultFromRepository()
         {
             var products = ProductFactory.CreateCollection(10);
-            A.CallTo(() => this.productService.All()).Returns(products);
+            A.CallTo(() => this.productRepository.All()).Returns(products);
 
             var result = this.productService.All();
 
