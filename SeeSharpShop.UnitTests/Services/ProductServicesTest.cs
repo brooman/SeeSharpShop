@@ -31,7 +31,19 @@ namespace SeeSharpShop.UnitTests.Services
             var result = this.productService.All();
 
             CollectionAssert.AllItemsAreInstancesOfType(result, typeof(Product));
-            Assert.That(result, Is.EqualTo(products));
+            Assert.AreEqual(result, products);
+        }
+
+        [Test]
+        public void Single_ReturnsResultFromRepository()
+        {
+            var product = ProductFactory.CreateSingle(1);
+            A.CallTo(() => this.productRepository.Single(1)).Returns(product);
+
+            var result = this.productService.Single(1);
+
+            Assert.AreEqual(result.GetType(), typeof(Product));
+            Assert.AreEqual(result, product);
         }
     }
 }
