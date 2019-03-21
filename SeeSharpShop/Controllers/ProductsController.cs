@@ -10,9 +10,8 @@ using System.Linq;
 
 namespace SeeSharpShop.Controllers
 {
-
     [Route("api/[controller]")]
-    public class ProductsController : Controller
+    public class ProductsController : ControllerBase
     {
         private readonly ProductService productService;
 
