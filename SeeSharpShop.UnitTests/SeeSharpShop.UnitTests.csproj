@@ -8,15 +8,19 @@
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="FakeItEasy" Version="5.1.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\SeeSharpShop\SeeSharpShop.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
   </ItemGroup>
 </Project>
