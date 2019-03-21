@@ -8,7 +8,7 @@ using SeeSharpShop.Models;
 
 namespace SeeSharpShop.Repositories
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         protected readonly string connectionString;
 
