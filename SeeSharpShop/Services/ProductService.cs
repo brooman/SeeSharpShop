@@ -9,9 +9,9 @@ namespace SeeSharpShop.Services
 {
     public class ProductService
     {
-        private readonly ProductRepository productRepository;
+        private readonly IProductRepository productRepository;
 
-        public ProductService(ProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }

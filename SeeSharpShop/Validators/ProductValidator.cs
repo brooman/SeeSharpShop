@@ -7,8 +7,8 @@ namespace SeeSharpShop.Validators
 {
     public class ProductValidator : AbstractValidator<Product>
     {
-        private readonly ProductRepository repository;
-        public ProductValidator(ProductRepository repository)
+        private readonly IProductRepository repository;
+        public ProductValidator(IProductRepository repository)
         {
             this.repository = repository;
 
