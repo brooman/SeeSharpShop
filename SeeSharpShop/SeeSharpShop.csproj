@@ -28,5 +28,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
     <Compile Remove="Services\HttpConfiguration.cs" />
+    <Compile Remove="Controllers\StoreController.cs" />
+    <Compile Remove="Repositories\vprivate.cs" />
   </ItemGroup>
 </Project>
