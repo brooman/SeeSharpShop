@@ -23,7 +23,7 @@ namespace SeeSharpShop.Controllers
         }
 
         [HttpGet("{key}")]
-        [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Product>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Index(string Key)
         {
