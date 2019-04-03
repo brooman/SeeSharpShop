@@ -16,7 +16,7 @@ namespace SeeSharpShop.Repositories
             this.connectionString = connectionString;
         }
 
-        Order IOrderRepository.Get(string key)
+        public Order Get(string key)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
