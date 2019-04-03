@@ -28,7 +28,7 @@ namespace SeeSharpShop.Repositories
             }
         }
 
-        public string UpdateOrCreate(string key, int product_id)
+        public string UpdateOrCreate(string key, List<int> products)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
@@ -41,7 +41,12 @@ namespace SeeSharpShop.Repositories
 
                 var cart_id = connection.Query<String>("SELECT id FROM Cart WHERE cart_key = @Key", new { Key = key });
 
-                connection.Execute("INSERT INTO Cart_Products (cart_id, product_id) VALUES (@Cart_id, @Product_id);", new { Cart_id = cart_id, Product_id = product_id});
+                //Bad practice :)
+                connection.Execute("DELETE FROM Cart_Products WHERE cart_id = @cart_id", new { cart_id });
+
+                foreach (int product_id in products) {
+                    connection.Execute("INSERT INTO Cart_Products (cart_id, product_id) VALUES (@Cart_id, @Product_id);", new { Cart_id = cart_id, Product_id = product_id });
+                }
 
                 return key;
             }

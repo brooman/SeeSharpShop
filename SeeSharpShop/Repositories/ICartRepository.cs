@@ -6,7 +6,7 @@ namespace SeeSharpShop.Repositories
 {
     public interface ICartRepository
     {
-        string UpdateOrCreate(string key, int product_id);
+        string UpdateOrCreate(string key, List<int> products);
         List<Product> Get(string key);
         bool CheckKey(string key);
     }

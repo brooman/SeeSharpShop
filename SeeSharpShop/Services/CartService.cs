@@ -19,10 +19,9 @@ namespace SeeSharpShop.Services
             return this.cartRepository.Get(Key);
         }
 
-        public string UpdateOrCreate(string Key, int product_id)
+        public string UpdateOrCreate(string Key, List<int> Products)
         {
-            return this.cartRepository.UpdateOrCreate(Key, product_id);
+            return this.cartRepository.UpdateOrCreate(Key, Products);
         }
-
     }
 }

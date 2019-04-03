@@ -34,9 +34,9 @@ namespace SeeSharpShop.Controllers
         [HttpPost("{key}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Add(string Key, [FromBody]Product Product)
+        public IActionResult UpdateOrCreate(string Key, [FromBody]List<int> products)
         {
-            string cart_key = cartService.UpdateOrCreate(Key, Product.Id);
+            string cart_key = cartService.UpdateOrCreate(Key, products);
 
             return Ok(new { Key = cart_key } );
         }
