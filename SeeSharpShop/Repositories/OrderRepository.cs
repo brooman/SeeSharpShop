@@ -29,7 +29,7 @@ namespace SeeSharpShop.Repositories
 
                 //Theres probably better way to do this but I couldn't figure out how
                 var orderItems = connection.Query(
-                    "SELECT * FROM OrderItems WHERE order_id = 4",
+                    "SELECT * FROM OrderItems WHERE order_id = @OrderId",
                     new { OrderId = (int)order.orderid }
                 ).ToList();
 
@@ -79,11 +79,11 @@ namespace SeeSharpShop.Repositories
                 var order_id = connection.Query<int>(
                     "INSERT INTO Orders (order_key, customer_id) VALUES (@Key, @Customer); " +
                 	"SELECT LAST_INSERT_ID()",
-                new { 
-                    Key = key, 
-                    Customer = customer_id
-                 })
-                 .Single();
+                    new { 
+                        Key = key, 
+                        Customer = customer_id
+                     }
+                 ).Single();
                  
                 //Store products in OrderItems
                 foreach (var id in Products)
