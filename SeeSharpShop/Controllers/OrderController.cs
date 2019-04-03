@@ -26,11 +26,10 @@ namespace SeeSharpShop.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get(string key)
         {
-            var order = orderService.Get(key);
-            return Ok(order);
-
             try
             {
+                var order = orderService.Get(key);
+                return Ok(order);
             }
             catch (Exception)
             {
