@@ -35,6 +35,7 @@ namespace SeeSharpShop
             }
 
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
