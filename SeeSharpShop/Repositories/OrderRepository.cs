@@ -64,11 +64,11 @@ namespace SeeSharpShop.Repositories
             {
                 //Create Customer
                 var customer_id = connection.Query<int>(
-                    "INSERT INTO Customers (Name, Adress, Zipcode) VALUES (@Name, @Adress, @Zip; SELECT LAST_INSERT_ID()",
+                    "INSERT INTO Customers (Name, Adress, Zipcode) VALUES (@Name, @Adress, @Zip); SELECT LAST_INSERT_ID()",
                     new {
-                        customer.Name,
-                        customer.Adress,
-                        customer.Zipcode
+                        Name = customer.Name,
+                        Adress = customer.Adress,
+                        Zip = customer.Zipcode
                     }
                 ).Single();
 

@@ -26,7 +26,7 @@ namespace SeeSharpShop.Controllers
         public IActionResult Index()
         {
             var products = productService.All();
-            return Ok(products);
+            return Ok(new { products });
         }
 
         [HttpGet("{id}")]
