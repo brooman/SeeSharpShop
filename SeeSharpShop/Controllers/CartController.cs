@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using SeeSharpShop.Models;
 using SeeSharpShop.Repositories;
 using SeeSharpShop.Services;
@@ -34,9 +35,11 @@ namespace SeeSharpShop.Controllers
         [HttpPost("{key}")]
         [ProducesResponseType(typeof(void), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdateOrCreate(string Key, [FromBody]List<int> products)
+        public IActionResult UpdateOrCreate(string Key, [FromBody]JObject data)
         {
-            string cart_key = cartService.UpdateOrCreate(Key, products);
+            var products = data["products"].ToObject<List<int>>();
+
+            var cart_key = cartService.UpdateOrCreate(Key, products);
 
             return Ok(new { Key = cart_key } );
         }

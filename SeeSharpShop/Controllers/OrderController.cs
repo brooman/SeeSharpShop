@@ -42,22 +42,20 @@ namespace SeeSharpShop.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Create([FromBody]JObject data)
         {
-            var customer = new Customer
-            {
-                Name = (string)data["customer"]["name"],
-                Adress = (string)data["customer"]["adress"],
-                Zipcode = (string)data["customer"]["zip"],
-            };
-
-            var products = data["products"].ToObject<List<int>>();
-
-            string key = orderService.Create(customer, products);
-
-            return Ok(key);
-
             try
             {
+                var customer = new Customer
+                {
+                    Name = (string)data["customer"]["name"],
+                    Adress = (string)data["customer"]["adress"],
+                    Zipcode = (string)data["customer"]["zip"],
+                };
 
+                var products = data["products"].ToObject<List<int>>();
+
+                string key = orderService.Create(customer, products);
+
+                return Ok(key);
 
             } catch (Exception){
                 return BadRequest("Malformed json");
