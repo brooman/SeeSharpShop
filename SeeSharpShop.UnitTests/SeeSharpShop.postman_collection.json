@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "54767ab4-5c99-423e-8ac6-cdd4a4e89ed4",
+		"name": "SeeSharpShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch single product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product with Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test stuff\",\n\t\"description\": \"Updated\",\n\t\"cost\": 123\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/products/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"products",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get order from order key",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/order/6390385823fa4ecd8fad0ac25c83f714",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"order",
+						"6390385823fa4ecd8fad0ac25c83f714"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"customer\": {\n\t\t\"name\": \"Pelle\",\n\t\t\"adress\": \"Test street 123\",\n\t\t\"zip\": 123\n\t},\n\t\"products\": [1, 2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart by key",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/cart/6aafd69ef1184d8b958fa824ee8232fd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"cart",
+						"6aafd69ef1184d8b958fa824ee8232fd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cart with key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"products\": [1, 2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/cart/6aafd69ef1184d8b958fa824ee8232fd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"cart",
+						"6aafd69ef1184d8b958fa824ee8232fd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"products\": [1, 2, 3]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/cart/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"cart",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test stuff\",\n\t\"description\": \"Added by Postman\",\n\t\"cost\": 123\n}"
+				},
+				"url": {
+					"raw": "http://localhost:38858/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "38858",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
